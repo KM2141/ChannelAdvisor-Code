@@ -1,0 +1,1 @@
+Getpart(REDUCELIST(FUNCTION(VARS(@X, @Y, @Z), JOINNB("[flag]", EVAL(@Z), @X)), "Product Type Rule List", ""),"[flag]",1)
