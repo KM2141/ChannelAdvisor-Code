@@ -1,0 +1,22 @@
+FUNCTION(VARS(@X),GETPART(Proper(Joinnb("~~",
+if(not(isblank($meaning)),join(" ","This design symbolizes:",$meaning),""),
+IF(ISINLIST("Bulletpoint Pendant List",proper($category),"partial"),
+SELECTCASE(
+$itemmanufacturer="BICO Australia" AND $category="Bico Necklace", "Choose a Bico chain or leather necklace for your pendant(sold separately)",
+$itemmanufacturer="Inox", "Choose a Tribal Hollywood chain for your pendant (sold separately)", ""), ""),
+
+SELECTCASE(
+$itemmanufacturer="BICO Australia","Designed by jewelry artists in Australia",
+$itemmanufacturer="Scott Kay" OR $itemmanufacturer="SK Cobalt","Hand designed by renowned designer Scott Kay",
+$itemmanufacturer="King Baby Studio","Designed by hand and made in the U. S. A.",
+$itemmanufacturer="Inox","High quality 316L stainless steel", ""),
+
+IF($itemmanufacturer="Scott Kay" AND isinlist("Bulletpoint Bracelet List",proper($category)) AND NOT(isinlist("Bulletpoint Cuff List",proper($itemtitle))),"Scott Kay designer 925 sterling clasp", ""),
+selectcase($itemmanufacturer="Scott Kay" OR $itemmanufacturer="SK Cobalt","Scott Kay jewelry for men gives you high-end designer quality with a cool masculine edge.",
+$itemmanufacturer="King Baby Studio","King Baby men's jewelry gives you high-end designer quality with a true American rocker edge.", ""),
+IF($itemmanufacturer="Inox" AND NOT(Contains($itemtitle,"titanium")),"Great for active lifestyles because of its high durability", ""),
+IF($itemmanufacturer="Inox" AND (isinlist("PVD",$itemtitle) OR isinlist("PVD",$itemdescription)),"The color is imbedded in the steel for maximum wear.", ""),
+										
+Joinnb("~~",if($itemmanufacturer="BICO Australia" AND ISINLIST("Bulletpoint Pendant List",proper($category),"partial"), "Choose a Bico chain or leather necklace for your pendant(sold separately)",""), 
+
+IF($itemmanufacturer="SK Cobalt","Made in the U S A from proprietary SK Cobalt. Bright metal, harder than platinum.","")								   ))),"~~",@X))
